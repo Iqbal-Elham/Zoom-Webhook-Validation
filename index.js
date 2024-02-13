@@ -9,10 +9,10 @@ const port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 
-app.post("/test", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200);
   res.send(
-    `Zoom Webhook sample successfully running. Set this URL with the /webhook path as your apps Event notification endpoint URL. https://github.com/zoom/webhook-sample`
+    `Zoom Webhook sample successfully running. Set this URL with the /webhook path as your app's Event notification endpoint URL. https://github.com/Iqbal-Elham/Zoom-Webhook-Validation`
   );
 });
 

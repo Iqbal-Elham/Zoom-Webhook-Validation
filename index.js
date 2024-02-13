@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.status(200);
   res.send(
-    `Zoom Webhook sample successfully running. Set this URL with the /webhook path as your app's Event notification endpoint URL. https://github.com/Iqbal-Elham/Zoom-Webhook-Validation`
+    `Zoom Webhook sample successfully running. Set this URL with the /webhook path as your apps Event notification endpoint URL. https://github.com/zoom/webhook-sample`
   );
 });
 
@@ -69,20 +69,20 @@ app.post("/webhook", (req, res) => {
 
       // Make a POST request with a JSON payload.
 
-      const formData = { body: `${req.body.payload.object.id} webinar id` };
-      const options = {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: JSON.stringify(formData) ,
-      };
+      const formData = { body: req.body.payload.object.id };
+      // const options = {
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   data: JSON.stringify(formData),
+      // };
 
       const fetchData = async () => {
         try {
           const response = await axios.post(
             `https://www.zohoapis.com/crm/v2/functions/testzoom1/actions/execute?auth_type=apikey&zapikey=1003.41aadb9c21f6df93dafb0c76c0d317f1.2033e8d19d458c246aa8c0f07a691876`,
-            options
+            JSON.stringify(formData)
           );
 
           const contentText = response.data;

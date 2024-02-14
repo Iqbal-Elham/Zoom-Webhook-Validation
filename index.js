@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.status(200);
   res.send(
-    `Zoom Webhook sample successfully running. Set this URL with the /webhook path as your apps Event notification endpoint URL. https://github.com/zoom/webhook-sample`
+    `Zoom Webhook Validation successfully running. Set this URL with the /webhook path as your apps Event notification endpoint URL. https://github.com/Iqbal-Elham/Zoom-Webhook-Validation`
   );
 });
 
@@ -61,23 +61,9 @@ app.post("/webhook", (req, res) => {
         message: "Authorized request to Zoom Webhook sample.",
         status: 200,
       };
-      console.log("--------------------------------");
-      console.log(response.message);
-      console.log("--------------------------------");
-      console.log(req.body.payload);
-      console.log("--------------------------------");
-
       // Make a POST request with a JSON payload.
 
       const formData = { body: req.body.payload.object.id };
-      // const options = {
-      //   method: "post",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   data: JSON.stringify(formData),
-      // };
-
       const fetchData = async () => {
         try {
           const response = await axios.post(
@@ -93,22 +79,6 @@ app.post("/webhook", (req, res) => {
       };
 
       fetchData();
-
-      // const zohoURL =
-      //   "https://www.zohoapis.com/crm/v2/functions/testzoom1/actions/execute?auth_type=apikey&zapikey=1003.41aadb9c21f6df93dafb0c76c0d317f1.2033e8d19d458c246aa8c0f07a691876";
-
-      // axios
-      //   .get(zohoURL)
-      //   .then((response) => {
-      //     console.log(response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error("There was a problem with your Axios request:", error);
-      //   });
-      // console.log("-----------*********************---------------------");
-
-      // res.status(response.status);
-      // res.json(response);
     }
   } else {
     response = {

@@ -63,7 +63,7 @@ app.post("/webhook", (req, res) => {
       };
       // Make a POST request with a JSON payload.
 
-      const formData = { body: req.body.payload.object.id };
+      const formData = { body: req.body.payload.object };
       const fetchData = async () => {
         try {
           const response = await axios.post(
